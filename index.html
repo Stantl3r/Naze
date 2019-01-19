@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<title>Sanctuary</title>
-			<script src="maps.js"></script>
-		</head>
-		<body>
-			<header>
-				<div class="row">
-					<ul class="main-nav">
-						<li><a href=""> Sanctuary </a></li>
-						<li><a href=""> What To Do </a></li>
-						<li><a href=""> Shelters </a></li>
-					</ul>
-				</div>
-			</header>
-		</body>
-	</html>
+<html>
+	<head>
+		<style>
+		#map {
+			height: 100%;
+		}      
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<h3>Sanctuary</h3>
+
+    <!--The div element for the map -->
+	<div id="map"></div>
+	<script src="maps.js"></script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCykp6C4Ivqy-lhHMB1It1UcZnHkoVMU8Y&callback=initMap">
+	</script>
+	</body>
+</html>
