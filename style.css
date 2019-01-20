@@ -1,12 +1,12 @@
-h1 {
-	background-color: #C44B4B;
+b {
 	color: black;
-	font-family: palatino;
-}
-b{
-	color: black;
-	font-family: palatino;
+	font-family: serif;
 }
 body {
-	background-color: #C44B4B;
+	background-color: #AADAFF;
+}
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
