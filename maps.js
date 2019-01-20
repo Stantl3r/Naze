@@ -6,25 +6,34 @@ function initMap() {
 			var currentPositionLabel = 'YOU'
 			var directionsDisplay = new google.maps.DirectionsRenderer;
 			var directionsService = new google.maps.DirectionsService;
+			var markers = [];
+			//for (var i=0; i<)
 			marker = new google.maps.Marker({
 				position: pos,
 				animation: google.maps.Animation.DROP,
 				draggable: true,
 				label: currentPositionLabel
-			});
-			marker.setMap(map)
-			directionsDisplay.setMap(map);
-			getShelters(getCity(position.coords.latitude, position.coords.longitude));
-			calculateAndDisplayRoute(directionsService, directionsDisplay, position, '4115 Voltaire Street');
+            });
+            marker.setMap(map);
+            marker1 = new google.maps.Marker({
+            	position: {lat: 37.77, lng: -122.447}
+            })
+            marker1.setMap(map);
+            directionsDisplay.setMap(map);
+			getShelters(getCity(position.coords.latitude, position.coords.longitude));            
+			calculateAndDisplayRoute(directionsService, directionsDisplay, position, marker1.getPosition());
+			document.getElementById('mode').addEventListener('change', function() {
+           		calculateAndDisplayRoute(directionsService, directionsDisplay, position, marker1.getPosition());
+        	});
 		})
 	}
-}
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay, position, destination) {
+	var selectedMode = document.getElementById('mode').value;
 	directionsService.route({
 		origin: {lat: position.coords.latitude, lng: position.coords.longitude},
 		destination: destination,
-		travelMode: 'DRIVING'
+		travelMode: google.maps.TravelMode[selectedMode]
 	}, function(response, status) {
 		if (status == 'OK') {
 			directionsDisplay.setDirections(response);
@@ -33,7 +42,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, position
 		}
 	});
 }
-
 function getCity(lat, lng) {
 	city = '';
 	var latlng = new google.maps.LatLng(lat, lng);
@@ -71,5 +79,7 @@ function getShelters(city) {
 		shelter_lat.push(shelters_json.features[i].attributes.LATITUDE);
 		shelter_lng.push(shelters_json.features[i].attributes.LONGITUDE);
 	}
+	return shelter_lat
 }
 	
+}
