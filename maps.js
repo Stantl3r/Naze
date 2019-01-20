@@ -13,6 +13,10 @@ function initMap() {
             });
             marker.setMap(map);
             directionsDisplay.setMap(map);
+            directionsDisplay.setPanel(document.getElementById('right-panel'));
+            var control = document.getElementById('floating-panel');
+        	control.style.display = 'block';
+        	map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 			var loc = getShelters(getCity(position.coords.latitude, position.coords.longitude));
 			for(var i = 0; i<loc.shelter_lat.length; i++){
 				markers[i] = new google.maps.Marker({
