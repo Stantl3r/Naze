@@ -67,7 +67,7 @@ function getCity(lat, lng) {
 	xhr.open("GET", url, false);
 	xhr.send(null);
 	var location_json = JSON.parse(xhr.responseText);
-	return location_json.results[0].formatted_address.split(',')[2]
+	return location_json.results[0].formatted_address.split(',')[1]
 }
 
 function getShelters(city) {
